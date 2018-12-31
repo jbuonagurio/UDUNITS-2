@@ -172,10 +172,10 @@ FUNCTION(texi_doc input)
                 --html --no-split ${common_input}
             VERBATIM
             COMMENT "Creating documentation from ${common_input}")
+        add_custom_target(${file}_doc ALL
+            DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.info
+                ${CMAKE_CURRENT_SOURCE_DIR}/${file}.html)
     ENDIF()
-    add_custom_target(${file}_doc ALL
-        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.info
-            ${CMAKE_CURRENT_SOURCE_DIR}/${file}.html)
     install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/${file}.info" DESTINATION
             ${CMAKE_INSTALL_INFODIR})
     install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/${file}.html" DESTINATION
