@@ -28,9 +28,11 @@
 #define strcasecmp stricmp
 #define stricmp _stricmp
 #define isatty _isatty
+#endif
 
 //We must accommodate the lack of snprintf in MSVC.
 //c99_snprintf is defined in c99_snprintf.c, in lib/.
+#if defined(_MSC_VER) && (_MSC_VER < 1900)
 #define snprintf c99_snprintf
 
 int c99_snprintf(

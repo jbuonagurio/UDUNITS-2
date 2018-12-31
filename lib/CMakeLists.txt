@@ -55,8 +55,10 @@ SET(libudunits2_src converter.c
 		    udunits2.h)
 
 if(MSVC)
-	SET(libudunits2_src ${libudunits2_src}
-	tsearch.c tsearch.h c99_snprintf.c)
+	SET(libudunits2_src ${libudunits2_src} tsearch.c tsearch.h)
+	if(MSVC_VERSION LESS 1900)
+		SET(libudunits2_src ${libudunits2_src} c99_snprintf.c)
+	endif()
 endif()
 
 add_library(libudunits2
